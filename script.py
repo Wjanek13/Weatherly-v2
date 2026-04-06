@@ -84,7 +84,7 @@ suggestion_list = tk.Listbox(menu_frame, font=("Arial", 18), width=61,
 
 quit_raw = Image.open(r"Images/Quit.png")
 width, height = quit_raw.size
-tk_quit = ImageTk.PhotoImage(quit_raw.resize((int(width * 0.75), int(height * 0.75))))
+tk_quit = ImageTk.PhotoImage(quit_raw.resize((int(width * 0.35), int(height * 0.35))))
 
 quit_button = tk.Button(
     menu_frame, 
@@ -96,7 +96,7 @@ quit_button = tk.Button(
     highlightthickness=0
 )
 quit_button.image = tk_quit
-quit_button.place(relx=0.5, rely=0.85, anchor="center")
+quit_button.place(relx=0.5, rely=0.95, anchor="center")
 
 user_input.bind("<FocusIn>", clear_placeholder)
 user_input.bind("<KeyRelease>", get_suggestions)
