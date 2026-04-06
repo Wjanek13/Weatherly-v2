@@ -1,6 +1,8 @@
 import tkinter as tk
 
-tkinter = tk.Tk()
-tkinter.geometry("400x300")
-tkinter.title("Weatherly")
-tkinter.mainloop()
+root = tk.Tk()
+root.state('zoomed')
+root.configure(bg="#00008B")
+root.resizable(False, False)
+root.title("Weatherly")
+root.mainloop()
