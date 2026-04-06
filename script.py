@@ -26,4 +26,14 @@ image_label.image = tk_img
 image_label.pack()
 image_label.place(anchor="center", relx=0.5, rely=0.35)
 
+user_input = tk.Entry(root, font=("Arial", 28), width=50, borderwidth=0)
+user_input.pack()
+user_input.place(anchor="center", relx=0.5, rely=0.55)
+user_input.insert(0, "Search city...")
+def clear_placeholder(event):
+    if user_input.get() == "Search city...":
+        user_input.delete(0, tk.END)
+
+user_input.bind("<FocusIn>", clear_placeholder)
+
 root.mainloop()
