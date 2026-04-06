@@ -41,9 +41,6 @@ image_label = tk.Label(menu_frame, image=tk_img, bg=bg_color)
 image_label.image = tk_img 
 image_label.pack()
 image_label.place(anchor="center", relx=0.5, rely=0.35)
-
-
-
 # --- MAP SCREEN ---
 
 map_frame = tk.Frame(root)
