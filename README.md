@@ -7,10 +7,11 @@ A weather app built with Python and tkinter.
 - pyowm
 - Pillow
 - requests
+- pyglet
 
 ## Installation
 ```
-pip install pyowm pillow requests
+pip install pyowm pillow requests pyglet
 ```
 ## Usage
 ```
