@@ -1,6 +1,6 @@
 # Weatherly v2 - Linux Fork
 
-The official Linux port of [Weatherly v2](https://github.com/Wjanek13/Weatherly-v2).
+The official Linux version of [Weatherly v2](https://github.com/Wjanek13/Weatherly-v2).
 
 ## Requirements
 - Python 3.x
