@@ -124,23 +124,21 @@ def search():
             observation = mgr.weather_at_coords(lat, lon)
             w = observation.weather
             
-            # Fix: .temperature() instead of .get_temperature()
-            if metric_selected == "celcius":
-                temp = w.temperature('celsius')['temp']
-                unit = "°C"
-            elif metric_selected == "fahrenheit":
-                temp = w.temperature('fahrenheit')['temp']
-                unit = "°F"
-            else:
-                temp = w.temperature('kelvin')['temp']
-                unit = "K"
+            unit_key = 'celsius' if metric_selected == "celcius" else ('fahrenheit' if metric_selected == "fahrenheit" else 'kelvin')
+            unit_sym = "°C" if metric_selected == "celcius" else ("°F" if metric_selected == "fahrenheit" else "K")
+
+            temp_dict = w.temperature(unit_key)
+            temp = temp_dict['temp']
+            feels_like = temp_dict['feels_like']
 
             search_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
             menu_frame.place_forget()
             search_back_button.lift() 
             
             city_label.configure(text=f"{city_data['name']}, {city_data['country']}".upper())
-            temp_label.configure(text=f"{round(temp)}{unit}")
+            temp_label.configure(text=f"{round(temp)}{unit_sym}")
+            feels_label.configure(text=f"FEELS LIKE: {round(feels_like)}{unit_sym}")
+            
     except Exception as e:
         print(f"Search Error: {e}")
 
@@ -224,6 +222,9 @@ city_label.place(relx=0.5, rely=0.1, anchor="center")
 
 temp_label = tk.Label(search_frame, text="0°C", font=("PixeloramaFont", 72), bg=bg_color, fg="#ffffff")
 temp_label.place(relx=0.5, rely=0.3, anchor="center")
+
+feels_label = tk.Label(search_frame, text="FEELS LIKE: 0°C", font=("PixeloramaFont", 32), bg=bg_color, fg="#ffffff")
+feels_label.place(relx=0.5, rely=0.45, anchor="center")
 
 user_input.bind("<FocusIn>", clear_placeholder)
 user_input.bind("<KeyRelease>", force_uppercase)
